@@ -11,7 +11,7 @@ import javax.persistence.Table;
 /**
  * 
  * @author Tomasz Gomoradzki
- * Project Task ORM object, mapped with database, used to handle managing data within application
+ * Project Task ORM object, mapped with database, used to handle managing data within application.
  *
  */
 
