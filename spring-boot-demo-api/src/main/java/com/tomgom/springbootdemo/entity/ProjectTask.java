@@ -15,21 +15,22 @@ import javax.persistence.Table;
  *
  */
 
+
 @Entity
-@Table(name="task")
+@Table(name="PROJECT_TASK")
 public class ProjectTask {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator="entity_seq_gen")
-	@SequenceGenerator(name="entity_seq_gen", sequenceName="hr.TASK_SEQ")
+	@SequenceGenerator(name="entity_seq_gen", sequenceName="hr.PROJECT_TASK_SEQ")
 	@Column(name="ID")
 	private int id;
 		
-	@Column(name="Title")
+	@Column(name="TITLE")
 	private String title;
 	
-	@Column(name="content")	
-	private String content;
+	@Column(name="NOTE")	
+	private String note;
 	
 	public ProjectTask() {
 		
@@ -37,7 +38,7 @@ public class ProjectTask {
 
 	public ProjectTask(String title, String content) {
 		this.title = title;
-		this.content = content;
+		this.note = content;
 	}
 
 	public int getId() {
@@ -57,16 +58,16 @@ public class ProjectTask {
 	}
 
 	public String getContent() {
-		return content;
+		return note;
 	}
 
 	public void setContent(String content) {
-		this.content = content;
+		this.note = content;
 	}
 
 	@Override
 	public String toString() {
-		return "ProjectTask [id=" + id + ", title=" + title + ", content=" + content + "]";
+		return "ProjectTask [id=" + id + ", title=" + title + ", content=" + note + "]";
 	}
 
 	

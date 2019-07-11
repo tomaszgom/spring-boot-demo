@@ -4,26 +4,56 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tomgom.springbootdemo.dao.ProjectTaskDAO;
 import com.tomgom.springbootdemo.entity.ProjectTask;
+import com.tomgom.springbootdemo.service.ProjectTaskService;
 
 @RestController
 @RequestMapping("/api")
 public class ProjectTaskRestController {
 	
-	private ProjectTaskDAO projectTaskDAO;
+	private ProjectTaskService projectTaskService;
 	
 	@Autowired
-	public ProjectTaskRestController(ProjectTaskDAO theProjectTaskDAO) {		
-		projectTaskDAO = theProjectTaskDAO;
+	public ProjectTaskRestController(ProjectTaskService theProjectTaskService) {		
+		projectTaskService = theProjectTaskService;
 	}
 
+	// Return the list of Project Tasks
 	@GetMapping ("/project-tasks")
 	public List<ProjectTask> getAll(){
-		return projectTaskDAO.getAll();
+		return projectTaskService.getAll();
+	}
+	
+	@GetMapping("/project-tasks/{projectTaskId}")
+	public ProjectTask getProjectTask(@PathVariable int projectTaskId ){
+		ProjectTask theProjectTask = projectTaskService.searchById(projectTaskId);
+
+		if(theProjectTask == null) {
+			throw new RuntimeException("Employee id not found - " + projectTaskId);
+		}
+		return theProjectTask;
+	}
+	
+	//Add new Project Task
+	@PostMapping("/project-tasks/")
+	public ProjectTask addProjectTask(@RequestBody ProjectTask theProjectTask) {
+		
+		theProjectTask.setId(0);	
+		projectTaskService.saveTask(theProjectTask);
+		return theProjectTask;
+	}
+	
+	
+	@GetMapping ("/test")
+	public String getTestString(){
+		return "Test was successful!";
 	}
 	
 }

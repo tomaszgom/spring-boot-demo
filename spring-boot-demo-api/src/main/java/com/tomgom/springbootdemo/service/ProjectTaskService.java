@@ -1,10 +1,10 @@
-package com.tomgom.springbootdemo.dao;
+package com.tomgom.springbootdemo.service;
 
 import java.util.List;
 
 import com.tomgom.springbootdemo.entity.ProjectTask;
 
-public interface ProjectTaskDAO {
+public interface ProjectTaskService {
 	
 	public List<ProjectTask> getAll();
 	
@@ -13,4 +13,5 @@ public interface ProjectTaskDAO {
 	public void saveTask(ProjectTask theProjectTask);
 
 	public void deleteTaskById(int theId);
+
 }
