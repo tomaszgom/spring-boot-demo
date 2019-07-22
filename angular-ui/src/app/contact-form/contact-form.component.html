@@ -1,0 +1,56 @@
+<header>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <ul class="navbar-nav">
+                <li><a routerLink="/angular-ui" class="nav-link">Contact Form</a></li>
+                <li><a routerLink="/client-requests-list" class="nav-link">Requests List</a></li>
+            </ul>
+        </nav>
+    </header>
+<br>
+
+<h2>Contact Form</h2>
+
+<div class="container">
+
+<form (ngSubmit)="butHandleSubmitRequest()" #clientRequestForm="ngForm">
+    <div class="alert alert-warning" *ngIf='!formValidationCheck'>{{errorMessage}}</div>
+        <br>
+    <table>
+        <tr>
+        <td valign="top">
+            First Name:<br><input type="text" class="form-controll" name="firstName" #description="ngModel" [(ngModel)]="clientRequest.firstName" required="required">
+        </td>
+        <td></td>
+        <td valign="top">
+            Last Name:<br><input type="text" class="form-controll" name="lastName" [(ngModel)]="clientRequest.lastName" required="required">
+        </td>
+        </tr>
+    
+        <tr>
+        <td valign="top">
+           Email Address:<br><input type="text" class="form-controll" name="emailAddress" [(ngModel)]="clientRequest.emailAddress">
+        </td>
+        <td></td>
+        <td valign="top">
+            Postal Address:<br><input type="text" class="form-controll" name="postalAddress" [(ngModel)]="clientRequest.postalAddress" >            
+        </td>
+        </tr>
+    
+        <tr>
+        <td valign="top">
+            Phone:<br><input type="text" class="form-controll" name="phone" [(ngModel)]="clientRequest.phone">
+        </td>
+        <td></td>
+        <td valign="top">
+            Contact Purpose:<br><input type="text" class="form-controll" name="contactPurpose" [(ngModel)]="clientRequest.contactPurpose">           
+        </td>
+        </tr>
+    </table>
+    
+    <br>
+    <button type="submit" class="btn btn-success" >Submit Request</button>
+</form>
+
+
+<br>
+</div>
