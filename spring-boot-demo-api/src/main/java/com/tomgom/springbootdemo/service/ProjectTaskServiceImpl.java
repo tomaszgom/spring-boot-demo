@@ -6,16 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.tomgom.springbootdemo.dao.ProjectTaskDAO;
 import com.tomgom.springbootdemo.entity.ProjectTask;
+import com.tomgom.springbootdemo.repository.ProjectTaskRepository;
 
 @Service
 public class ProjectTaskServiceImpl implements ProjectTaskService {
 
-	private ProjectTaskDAO projactTaskDAO;
+	private ProjectTaskRepository projactTaskDAO;
 	
 	@Autowired
-	public ProjectTaskServiceImpl(ProjectTaskDAO theProjactTaskDAO) {
+	public ProjectTaskServiceImpl(ProjectTaskRepository theProjactTaskDAO) {
 		projactTaskDAO = theProjactTaskDAO;
 	}
 	

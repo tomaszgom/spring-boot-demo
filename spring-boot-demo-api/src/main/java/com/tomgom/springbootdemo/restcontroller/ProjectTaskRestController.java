@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tomgom.springbootdemo.dao.ProjectTaskDAO;
 import com.tomgom.springbootdemo.entity.ProjectTask;
+import com.tomgom.springbootdemo.repository.ProjectTaskRepository;
 import com.tomgom.springbootdemo.service.ProjectTaskService;
 
 @RestController

@@ -1,7 +1,5 @@
 package com.tomgom.springbootdemo.entity;
 
-import java.sql.Date;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,12 +23,12 @@ import java.util.List;
  */
 
 @Entity
-@Table(name="TEAM_MEMBER")
+//@Table(name="TEAM_MEMBER")
 public class TeamMember {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator="entity_seq_gen")
-	@SequenceGenerator(name="entity_seq_gen", sequenceName="hr.TEAM_MEMBER_SEQ")
+	@GeneratedValue(strategy = GenerationType.AUTO)//, generator="entity_seq_gen")
+	//@SequenceGenerator(name="entity_seq_gen", sequenceName="hr.TEAM_MEMBER_SEQ")
 	@Column(name="ID")
 	private int id;
 	
@@ -50,62 +48,49 @@ public class TeamMember {
 	@Column(name="POINTS")
 	private Integer points;
 	
-	@Column(name="LAST_LOGIN_DATE")
-	private Date lastLoginDate;
 	
-	@OneToMany(mappedBy="client", // reference to Client field in Purchase Order class
-				cascade= {CascadeType.ALL,	 
-							//CascadeType.PERSIST, // Cascade save operations
-							//CascadeType.REMOVE, // Removes all related entities association with this setting when the owning entity is deleted.
-							//CascadeType.MERGE,
-							//CascadeType.DETACH,
-							//CascadeType.REFRESH,
-							},orphanRemoval = true)//@JoinColumn( name="CLIENT_ID")
+	@OneToMany(mappedBy="teamMember", // reference to teamMember field in ProjectTask class
+				cascade= {CascadeType.ALL,},orphanRemoval = true)//@JoinColumn( name="TEAM_MEMBER_ID")
 
-//	private List<PurchaseOrder> purchaseOrders;
+	private List<ProjectTask> projectTasksList;
 
 	public TeamMember() {}
 	
 	// Bi-directional relationship method
-	public void addPurchaseOrder(PurchaseOrder purchaseOrder) {
-		if(purchaseOrders == null) {
-			purchaseOrders = new ArrayList<>();
+	public void addPurchaseOrder(ProjectTask projectTask) {
+		if(projectTasksList == null) {
+			projectTasksList = new ArrayList<>();
 		}
 		
-		purchaseOrders.add(purchaseOrder);
-		purchaseOrder.setClient(this);
+		projectTasksList.add(projectTask);
+		projectTask.setTeamMember(this);
 	}
 	
 	// Bi-directional relationship method
-	public void removePurchaseOrder(PurchaseOrder purchaseOrder) {
-		if(purchaseOrders == null) {
+	public void removeProjectTask(ProjectTask projectTask) {
+		if(projectTasksList == null) {
 			return;
 		}
 		
-		purchaseOrders.remove(purchaseOrder);
-		purchaseOrder.setClient(this);
+		projectTasksList.remove(projectTask);
+		projectTask.setTeamMember(this);
 	}
 	
-	@Override
-	public String toString() {
-		return "Client [Client_id=" + client_id + ", firstName=" + firstName + ", lastName=" + lastName + ", city="
-				+ team + ", points=" + points + ", lastLoginDate=" + lastLoginDate + "]";
+	
+	public List<ProjectTask> getProjectTasks(){
+		return projectTasksList;
 	}
 	
-	public List<PurchaseOrder> getPurchaseOrders(){
-		return purchaseOrders;
-	}
-	
-	public void setPOrsers(List<PurchaseOrder> purchaseOrders) {
-		this.purchaseOrders = purchaseOrders;
+	public void setPOrsers(List<ProjectTask> projectTasksList) {
+		this.projectTasksList = projectTasksList;
 	}
 
-	public int getClient_id() {
-		return client_id;
+	public int getId() {
+		return id;
 	}
 
-	public void setClient_id(int cl_id) {
-		client_id = cl_id;
+	public void setId(int theId) {
+		this.id = theId;
 	}
 
 	public String getFirstName() {
@@ -124,12 +109,12 @@ public class TeamMember {
 		this.lastName = lastName;
 	}
 
-	public String getCity() {
+	public String getTeam() {
 		return team;
 	}
 
-	public void setCity(String city) {
-		this.team = city;
+	public void setTeam(String team) {
+		this.team = team;
 	}
 
 	public int getPoints() {
@@ -144,13 +129,12 @@ public class TeamMember {
 		this.points = points;
 	}
 
-	public Date getLastLoginDate() {
-		return lastLoginDate;
+	@Override
+	public String toString() {
+		return "TeamMember [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", team=" + team
+				+ ", points=" + points + ", projectTasksList=" + projectTasksList + "]";
 	}
 
-	public void setLastLoginDate(Date lastLoginDate) {
-		this.lastLoginDate = lastLoginDate;
-	}
 
-
+	
 }
