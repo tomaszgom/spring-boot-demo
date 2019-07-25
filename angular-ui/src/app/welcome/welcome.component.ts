@@ -19,7 +19,7 @@ export class WelcomeComponent implements OnInit {
   }
 
   butHandleWelcomeContinue() {
-        this.router.navigate(['angular-ui'])
+        this.router.navigate(['contact-form'])
   }
 
 }
