@@ -116,7 +116,7 @@
 							<outputDirectory>${basedir}/target/classes/static/</outputDirectory>
 							<resources>
 								<resource>
-									<directory>${basedir}/../angular-ui/dist/angular-ui</directory>
+									 <directory>${basedir}/../angular-ui/dist/angular-ui</directory>
 								</resource>
 							</resources>
 						</configuration>
