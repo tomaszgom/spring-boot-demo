@@ -26,9 +26,10 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tomgom.springbootdemo.SpringBootDemoApplication;
-import com.tomgom.springbootdemo.entity.ClientRequest;
-import com.tomgom.springbootdemo.repository.ClientRequestRepository;
+
+import tg.springbootdemo.SpringBootDemoApplication;
+import tg.springbootdemo.entity.ClientRequest;
+import tg.springbootdemo.repository.ClientRequestRepository;
 
 
 /**
@@ -61,7 +62,7 @@ public class ClientRequestControllerTest {
     	ClientRequest clientRequest = new ClientRequest("John","Smith","john@cf.com","Address 1","333-444","Purpose of request 1");
     	
     	mockMvc.perform( MockMvcRequestBuilders
-          .post("/jpa/client-requests")
+          .post("/issues")
           .content(asJsonString(clientRequest))
           .contentType(MediaType.APPLICATION_JSON)
           .accept(MediaType.APPLICATION_JSON))
@@ -79,7 +80,7 @@ public class ClientRequestControllerTest {
 		createClientRequest( "John","Smith","john@cf.com","Address 1","333-444","Purpose of request 1");
 		createClientRequest( "Jane","Jones","john@cf.com","Address 2","333-555","Purpose of request 2");
 	 	    
-		mockMvc.perform(get("/jpa/client-requests").contentType(MediaType.APPLICATION_JSON))
+		mockMvc.perform(get("/issues").contentType(MediaType.APPLICATION_JSON))
         .andDo(print())
         .andExpect(status().isOk())
         .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))

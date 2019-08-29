@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+@import url(https://unpkg.com/bootstrap@4.1.0/dist/css/bootstrap.min.css);
+
+
+.list-group-item{
+    cursor: pointer;
+  }
+  
+  .input-label{
+    background:rgba(0,0,0,0);
+    border:none;
+    cursor: pointer;
+  }
+  
+  .input-label-lg{
+    background:rgba(0,0,0,0);
+    border:none;
+    cursor: pointer;
+    font-size: large;
+    font-weight: bold;
+  }

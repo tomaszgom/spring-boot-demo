@@ -10,7 +10,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	
-	<groupId>com.tomgom</groupId>
+	<groupId>com.tg</groupId>
 	<artifactId>spring-boot-demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
@@ -116,7 +116,7 @@
 							<outputDirectory>${basedir}/target/classes/static/</outputDirectory>
 							<resources>
 								<resource>
-									 <directory>${basedir}/../angular-ui/dist/angular-ui</directory>
+									 <directory>${basedir}/../angular-front-end/dist/angular-front-end</directory>
 								</resource>
 							</resources>
 						</configuration>
