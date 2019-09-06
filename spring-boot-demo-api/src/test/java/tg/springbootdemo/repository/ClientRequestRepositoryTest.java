@@ -23,26 +23,27 @@ import tg.springbootdemo.repository.ClientRequestRepository;
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class ClientRequestRepositoryTest {
-	
-    @Autowired
-    private TestEntityManager entityManager;
 
-    @Autowired
-    private ClientRequestRepository clientRequestRepository;
-    
-    
-    @Test
-    public void whenFindById_thenReturnClientRequest() {
-        // Mock Request
-    	ClientRequest clientRequest = new ClientRequest( "John","Smith","john@cf.com","Address 1","333-444","Purpose of request 1");
-    	
-    	// Persist
-    	entityManager.persistAndFlush(clientRequest);
-        
-        Optional<ClientRequest> foundRequest = clientRequestRepository.findById(clientRequest.getId());
-     
-        // Check if Mock and persisted are equal
-        assertEquals(foundRequest.get().getId(), clientRequest.getId());
-    }
+	@Autowired
+	private TestEntityManager entityManager;
+
+	@Autowired
+	private ClientRequestRepository clientRequestRepository;
+
+	// Test Find Entity by Id
+	@Test
+	public void whenFindById_thenReturnClientRequest() {
+		// Mock Request
+		ClientRequest clientRequest = new ClientRequest("John", "Smith", "john@cf.com", "Address 1", "333-444",
+				"Purpose of request 1");
+
+		// Persist
+		entityManager.persistAndFlush(clientRequest);
+
+		Optional<ClientRequest> foundRequest = clientRequestRepository.findById(clientRequest.getId());
+
+		// Check if Mock and persisted are equal
+		assertEquals(foundRequest.get().getId(), clientRequest.getId());
+	}
 
 }
