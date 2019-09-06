@@ -1,6 +1,6 @@
 # Spring Boot & Angular Demo Application - 'Project Manager' Tool by Tomasz Gomoradzki
 
-Relatively simple tool allowing to manage Project work, tasks, sub tasks, team members, sending updates.
+Relatively simple tool allowing to manage Project work, tasks, sub tasks, team members, sending email updates.
 Application uses embeded H2 database. After being built application can be launched and tested (see details below).
 
 
@@ -9,9 +9,11 @@ Deployment and running:
 Project directory structure is divided into two main parts:
 
 - 'angular-front-end', which is Angular front-end
-- 'spring-boot-demo-api', which is Spring Boot back-end rest api
+- 'spring-boot-demo-api', which is Spring Boot back-end REST api
 
-It is set up to be built using Maven into one WAR file, produced in /spring-boot-demo/target directory To do that:
+It is set up to be built using Maven into one WAR file, produced in directory: /spring-boot-demo/target directory.
+
+To do that:
 
 1. clone the project
 2. go to project api directory: '/spring-boot-demo/spring-boot-demo-api'
