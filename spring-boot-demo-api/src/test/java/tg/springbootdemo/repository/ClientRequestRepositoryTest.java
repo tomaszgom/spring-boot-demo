@@ -1,4 +1,4 @@
-package com.tomgom.springbootdemo.repository;
+package tg.springbootdemo.repository;
 
 import static org.junit.Assert.*;
 
