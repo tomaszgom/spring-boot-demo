@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.UUID;
 
 @Entity
-public class ProjectSubTask {
+public class ProjectSubTask extends ProjectIssue {
 
 	    @Id
 	    private int id;

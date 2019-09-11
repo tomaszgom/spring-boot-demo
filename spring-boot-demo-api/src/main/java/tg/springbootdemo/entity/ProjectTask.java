@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 //@Table(name="PROJECT_TASK")
-public class ProjectTask {
+public class ProjectTask extends ProjectIssue {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)//, generator="entity_seq_gen")
