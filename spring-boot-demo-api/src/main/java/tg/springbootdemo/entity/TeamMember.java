@@ -33,17 +33,17 @@ public class TeamMember {
 	private int id;
 	
 	@NotNull(message="First Name is required")
-	@Size(min=1, message="First Name is required")
+	@Size(min=1, max=25, message="First Name is required and cannot be longer than 25 characters")
 	@Column(name="FIRST_NAME")
 	private String firstName;
-		
+			
 	@NotNull(message="Last Name is required")
-	@Size(min=1, message="Last Name is required")
+	@Size(min=1, max=25, message="Last Name is required and cannot be longer than 25 characters")
 	@Column(name="LAST_NAME")
 	private String lastName;
 	
-	@Column(name="TEAM")
-	private String team;
+	@Column(name="EMAIL_ADDRESS")
+	private String emailAddress;
 	
 	@Column(name="POSITION")
 	private String position;
@@ -51,12 +51,31 @@ public class TeamMember {
 	@Column(name="POINTS")
 	private Integer points;
 	
+	@Column(name="PHONE")
+	private String phone;
+	
+	@Column(name="NOTE")
+	private String note;
+	
 	
 //	@OneToMany(mappedBy="teamMember", // reference to teamMember field in ProjectTask class
 //				cascade= {CascadeType.ALL,},orphanRemoval = true)//@JoinColumn( name="TEAM_MEMBER_ID")
 //	private List<ProjectTask> projectTasksList;
 
 	public TeamMember() {}
+	
+	public TeamMember(String firstName, String lastName, String emailAddress, String position, Integer points,
+			String phone, String note) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.emailAddress = emailAddress;
+		this.position = position;
+		this.points = points;
+		this.phone = phone;
+		this.note = note;
+	}
+	
+	
 	
 	// Bi-directional relationship method
 //	public void addProjectTask(ProjectTask projectTask) {
@@ -87,6 +106,8 @@ public class TeamMember {
 //		this.projectTasksList = projectTasksList;
 //	}
 
+
+
 	public int getId() {
 		return id;
 	}
@@ -111,12 +132,12 @@ public class TeamMember {
 		this.lastName = lastName;
 	}
 
-	public String getTeam() {
-		return team;
+	public String getEmailAddress() {
+		return emailAddress;
 	}
 
-	public void setTeam(String team) {
-		this.team = team;
+	public void setEmailAddress(String emailAddress) {
+		this.emailAddress = emailAddress;
 	}
 	
 	public String getPosition() {
@@ -138,10 +159,23 @@ public class TeamMember {
 	public void setPoints(int points) {
 		this.points = points;
 	}
+	
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public String getNote() {
+		return note;
+	}
+	public void setNote(String note) {
+		this.note = note;
+	}
 
 	@Override
 	public String toString() {
-		return "TeamMember [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", team=" + team
+		return "TeamMember [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", EmailAddress=" + emailAddress
 				+ ", points=" + points + ", projectTasksList="  + "]";
 	}
 

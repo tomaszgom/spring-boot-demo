@@ -7,12 +7,13 @@ values
 (105, 'Jane','Jones','jane@cf.com','Address 4','999-555-99','Comment 4');
 
 
-insert into TEAM_MEMBER (ID, FIRST_NAME, LAST_NAME, POINTS, POSITION, TEAM)
+insert into TEAM_MEMBER (ID, FIRST_NAME, LAST_NAME, EMAIL_ADDRESS, POSITION, POINTS, PHONE, NOTE)
 values
-(101, 'Bill','Murray',10,'Project Manager','The A-Team'),
-(102, 'Julia','Roberts',11,'Business Analyst','The A-Team'),
-(103, 'Chuck','Norris',12,'Developer','The A-Team'),
-(104, 'Jane','Jones',13,'Developer','The A-Team');
+(101, 'Bill','Murray','Bill.Murray@cf.com','Project Manager',100, '333-444-55', 'Somethig about Bill'),
+(102, 'Julia','Roberts','Julia.Roberts@cf.com','Business Analyst',100, '444-555-66', 'Somethig about Julia'),
+(103, 'Chuck','Norris','Chuck.Norris@cf.com','Developer',500, '333-444-88', 'Somethig about Chuck'),
+(104, 'Jane','Jones','jane@cf.com','Developer',60, '333-444-88', 'Somethig about Jane'),
+(105, 'Robert','Whittaker','Robert.Whittaker@cf.com','Project Manager',50, '999-555-99', 'Somethig about Robert');
 
 
 insert into PROJECT_TASK (ID, TITLE, DESCRIPTION, STATUS, PRIORITY, DEADLINE_DATE)
@@ -32,5 +33,13 @@ values
 (10004, 1003,'Developemnt 1 Sub Task 2','Developemnt 1  Sub Task 1 Description','In progress',PARSEDATETIME('30-Aug-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en')),
 (10005, 1004,'Analysis Sub Task 1','Analysis  Sub Task 1 Description','In progress',PARSEDATETIME('26-Jun-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en')),
 (10006, 1004,'Analysis Sub Task 2','Analysis  Sub Task 2 Description','In progress',PARSEDATETIME('26-Jun-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en'));
-		 
+
+insert into PROJECT_BUG (ID, TITLE, DESCRIPTION, STATUS, PRIORITY, DEADLINE_DATE)
+values
+(101,'Bug 1','Bug 1 Description','In progress',	'High', 	PARSEDATETIME('26-Jun-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en')),
+(102,'Bug 2','Bug 2 Description','Completed',	'High', 	PARSEDATETIME('26-Jun-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en')),
+(103,'Bug 3','Bug 3 Description','Open',		'Low',		PARSEDATETIME('26-Jun-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en')),
+(104,'Bug 4','Bug 4 Description','Open',		'Low',		PARSEDATETIME('26-Jun-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en')),
+(105,'Bug 5','Bug 5 Description','In progress',	'Medium',	PARSEDATETIME('26-Jun-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en'));
+
 
