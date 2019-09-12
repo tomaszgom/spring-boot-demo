@@ -15,6 +15,7 @@ import { SendUpdateComponent } from './send-update/send-update.component';
 import { ProjectTasksComponent } from './project-tasks/project-tasks.component';
 import { ProjectSubTasksComponent } from './project-sub-tasks/project-sub-tasks.component';
 import { ProjectSubTaskFilterPipe } from './service/pipes/project-sub-task-filter.pipe';
+import { ProjectTasksListComponent } from './project-tasks-list/project-tasks-list.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ProjectSubTaskFilterPipe } from './service/pipes/project-sub-task-filte
     SendUpdateComponent,
     ProjectTasksComponent,
     ProjectSubTasksComponent,
-    ProjectSubTaskFilterPipe
+    ProjectSubTaskFilterPipe,
+    ProjectTasksListComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,32 @@
+<br>
+<h2>Project Tasks List
+
+</h2>
+<br><br>
+<div class="alert alert-success" *ngIf='message'>{{message}}</div>
+
+<div class="container">
+<table class="table">
+<thead>
+    <tr>
+        <th>Title</th>
+        <th>Status</th>
+        <th>Priority</th>
+        <th>Dead Line Date</th>
+        <th>Description</th>
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+    <!--Go through list of ProjectTasks list ..-->
+    <tr *ngFor="let projectTask of projectTasks">
+        <td>{{projectTask.title}}</td>
+        <td>{{projectTask.status}}</td>
+        <td>{{projectTask.priority}}</td>
+       <!-- <td>{{projectTask.deadLineDate}}</td> -->
+        <td>{{projectTask.description}}</td>
+        <td><button (click)="deleteProjectTask(projectTask.id)" class="btn btn-success">Delete</button></td>
+    </tr>
+</tbody>
+</table>
+</div>

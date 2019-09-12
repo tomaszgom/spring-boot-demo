@@ -6,6 +6,7 @@ import { IssueFormComponent } from './issue-form/issue-form.component';
 import { ErrorHandlerComponent } from './error-handler/error-handler.component';
 import { SendUpdateComponent } from './send-update/send-update.component';
 import { ProjectTasksComponent } from './project-tasks/project-tasks.component';
+import { ProjectTasksListComponent } from './project-tasks-list/project-tasks-list.component';
 
 
 // Routing
@@ -16,6 +17,7 @@ const appRoutes: Routes = [
   { path: 'issue-list', component: IssueListComponent},
   { path: 'send-update', component: SendUpdateComponent},
   { path: 'project-tasks', component: ProjectTasksComponent},
+  { path: 'project-tasks-list', component: ProjectTasksListComponent},
   { path: '**', component: ErrorHandlerComponent} //* sign match anything, handles error address requests path have to be the last
 ];
 
