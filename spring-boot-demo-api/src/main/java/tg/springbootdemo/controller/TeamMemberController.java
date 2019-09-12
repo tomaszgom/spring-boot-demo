@@ -63,9 +63,6 @@ public class TeamMemberController {
 			 return ResponseEntity.noContent().build();
 	}
 		
-	@GetMapping ("/team-member/test")
-	public String getTestString(){
-		return "Test was successful!";
-	}
+
 	
 }

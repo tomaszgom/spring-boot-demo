@@ -92,9 +92,4 @@ public class ProjectBugController {
 	
 	
 	
-	@GetMapping ("/project-bug/test")
-	public String getTestString(){
-		return "Test was successful!";
-	}
-	
 }
