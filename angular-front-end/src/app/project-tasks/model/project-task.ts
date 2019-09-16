@@ -8,5 +8,6 @@ export interface ProjectTask {
     status : string;
     priority : string;
     deadLineDate : Date;
+    nbOfProjectSubTasks: number;
 
 }
