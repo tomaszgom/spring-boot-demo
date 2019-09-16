@@ -59,17 +59,12 @@ public class ProjectTask extends ProjectIssue {
 	
 	@Column(name="DEADLINE_DATE")
 	private Date deadlineDate;
-	
-	@Column(name="SUB_TASKS")
-	private int nbOfProjectSubTasks;
-	
 	    
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "projectTask", cascade= CascadeType.ALL,orphanRemoval = true)
     private List<ProjectSubTask> projectSubTasks;
     
-    
-
+   
 	public ProjectTask() {	
 	}
 
@@ -129,14 +124,6 @@ public class ProjectTask extends ProjectIssue {
 		theProjectSubTask.setProjectTask(this);
 	}
 
-    public int getNbOfProjectSubTasks() {
-        return this.projectSubTasks.size();
-    }
-    
-    public void setNbOfProjectSubTasks(int nbOfProjectSubTasks) {
-        this.nbOfProjectSubTasks = nbOfProjectSubTasks;
-    }
-    
 	
 	public String getTitle() {
 		return title;

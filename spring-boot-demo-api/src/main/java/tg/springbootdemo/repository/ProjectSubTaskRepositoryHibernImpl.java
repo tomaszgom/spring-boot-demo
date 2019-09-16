@@ -58,11 +58,18 @@ public class ProjectSubTaskRepositoryHibernImpl implements ProjectSubTaskReposit
 
 	@Override
 	public void deleteSubTaskById(int theId) {
+
 		Session currentSession = entityManager.unwrap(Session.class);		
-		Query theQuery = currentSession.createNamedQuery(
-				"delete from ProjectSubTask where id=:projectSubTaskId");
-		theQuery.setParameter("projectSubTaskId", theId);
-	}
+		
+		// persistentInstance of Project Sub Task
+		ProjectSubTask theProjectSubTask = currentSession.load(ProjectSubTask.class, theId);
+	    if (theProjectSubTask != null) {
+	    	currentSession.delete(theProjectSubTask);	    	
+	        return;
+	    }    
+	    return;
+		
+		}
 
 	
 

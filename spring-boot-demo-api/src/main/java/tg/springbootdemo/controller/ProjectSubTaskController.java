@@ -68,7 +68,7 @@ public class ProjectSubTaskController {
 	        return projectSubTask;
 	    }
 
-	    @DeleteMapping("/{id}")
+	    @DeleteMapping("/{subTaskId}")
 	    public void delete(@PathVariable int subTaskId) {
 	        this.projectSubTaskService.deleteTaskById(subTaskId);  
 	    }
