@@ -17,11 +17,11 @@ export class ProjectSubTasksComponent implements OnInit {
   ngOnInit() {
   }
 
-  updateNote() {
+  updateProjectSubTask() {
     this.projectSubTaskUpdated.emit(this.projectSubTask);
   }
 
-  deleteNote() {
+  deleteProjectSubTask() {
     this.projectSubTaskDeleted.emit(this.projectSubTask);
   }
 

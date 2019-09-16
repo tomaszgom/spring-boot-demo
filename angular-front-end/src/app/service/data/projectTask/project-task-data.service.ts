@@ -50,6 +50,7 @@ saveProjectSubTask(projectSubTask: ProjectSubTask): Observable<ProjectSubTask>{
 
 deleteProjectSubTask(projectSubTaskId: number): Observable<any>{
   return this.http.delete(`${API_URL}/project-subtasks/${projectSubTaskId}`);
+
 }
 
 

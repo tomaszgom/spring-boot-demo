@@ -35,6 +35,7 @@ export class ProjectTasksComponent implements OnInit {
       )
   }
 
+
   public getAllProjectSubTasks(){
     this.projectTaskDataService.getAllProjectSubTasks().subscribe(
       res => { this.projectSubTasks = res; //using typed response which contains array of objects 
@@ -77,7 +78,7 @@ export class ProjectTasksComponent implements OnInit {
   updateProjectSubTask(projectSubTask : ProjectSubTask){
     this.projectTaskDataService.saveProjectSubTask(projectSubTask).subscribe(
       res => {
-        alert("Project Sub-task successfully saved.")},
+        alert("Project Sub-task successfully updated.")},
       error => {alert("Error: Project Sub-task could not be saved.")}
     )
   }
@@ -105,6 +106,7 @@ export class ProjectTasksComponent implements OnInit {
         res => {
             let indexOfSubTask = this.projectSubTasks.indexOf(projectSubTask);
             this.projectSubTasks.splice(indexOfSubTask, 1);
+            this.getAllProjectSubTasks();
         },
         error => {alert("Error: Sub-task could not be deleted.")}
         )

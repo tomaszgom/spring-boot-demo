@@ -1,23 +1,23 @@
-<div class="card bg-success" style="border:4px solid white;">
-    <div class="card-body" style="padding: 8px; margin-top: 8px;">
-      <div>
-        <!-- Sub Task Title -->
-        <input type="text"
-               [(ngModel)]="projectSubTask.title"
-               (change)="updateProjectSubTask()"
-               class="input-label-lg"
-               maxlength="18" style="width: 80%"
-        />
-        <a (click)="deleteProjectSubTask()" class="pull-right text-danger">
-          <i class="fa fa-trash-o"></i>
-        </a>
-      </div>
+<div class="card bg-secondary" style="border:4px solid white;">
+    <div class="card-header">
+      <!-- Sub Task Title class="input-label-lg" -->
+      <input type="text"
+             [(ngModel)]="projectSubTask.title"
+             (change)="updateProjectSubTask()"
+             maxlength="18" style="width: 80%"
+      />
+      <a (click)="deleteProjectSubTask()" class="pull-right text-danger">
+        <i class="glyphicon glyphicon-remove-circle"></i>
+      </a>
+    </div>
+    <div class="card-body" style="font-size: small" style="padding: 6px; margin-top: 6px;">
       <!-- SubTask description -->
       <textarea class="input-label"
                 style="width: 100%" rows="6"
                 [(ngModel)]="projectSubTask.description"
                 (change)="updateProjectSubTask()"></textarea>
-      <strong class="text-info" style="font-size: small">{{projectSubTask.deadLineDate | date:'dd-MM-yyy HH:mm'}}</strong>
+      <strong class="text-dark" style="font-size: small">{{projectSubTask.deadLineDate | date:'dd-MM-yyy HH:mm'}}</strong>
     </div>
+    <div class="card-footer" style="font-size: small">{{projectSubTask.status}}</div>
   </div>
   
