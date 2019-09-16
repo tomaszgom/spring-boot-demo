@@ -25,8 +25,10 @@ export class ProjectTaskDataService {
     return this.http.put<ProjectTask>(`${API_URL}/project-tasks/update`, projectTask);
   }
 
-  deleteProjectTask(id: number): Observable<any>{
-    return this.http.delete(`${API_URL}/project-tasks/${id}`);
+  //deleteProjectTask(id: number) {
+ deleteProjectTask(id: number): Observable<any>{
+   // return this.http.delete(`${API_URL}/project-tasks/${id}`);
+   return this.http.delete(`${API_URL}/project-tasks/${id}`);
   }
 
 //Get all SubTasks

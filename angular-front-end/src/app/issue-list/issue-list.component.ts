@@ -49,7 +49,7 @@ export class IssueListComponent implements OnInit {
       this.refreshIssuesList()
     }
   
-    deleteIssue(id){
+    deleteIssue(id: number){
       console.log(`Delete Issue ${id}` )
       this.issueService.deleteIssue(id).subscribe(
         response => {

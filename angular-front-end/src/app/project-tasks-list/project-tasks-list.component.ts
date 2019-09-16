@@ -3,18 +3,6 @@ import { Router } from '@angular/router';
 import { ProjectTaskDataService } from '../service/data/projectTask/project-task-data.service';
 import { ProjectTask } from '../project-tasks/model/project-task';
 
-export class ProjectTask1 {
-
-  constructor(
-    public id : number,
-    public title : string,
-    public description : string,
-    public status : string,
-    public priority : string,
-    public deadlineDate : Date
-  ) { }
-
-}
 
 @Component({
   selector: 'app-project-tasks-list',

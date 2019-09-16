@@ -79,15 +79,14 @@ public class ProjectTaskController {
 	}
 	
 	@DeleteMapping("/{projectTaskId}")
-	public String deleteProjectTask(@PathVariable int projectTaskId ){
+	public void deleteProjectTask(@PathVariable int projectTaskId ){
+		
 		Optional<ProjectTask> theProjectTask = projectTaskService.findById(projectTaskId);
 
 		if(theProjectTask.isEmpty()) {
 			throw new RuntimeException("Project Task id not found - " + projectTaskId);
 		}
-		
 		projectTaskService.deleteTaskById(projectTaskId);
-		return "Project Task Id '" + theProjectTask + "' has been deleted.";
 	}
 	
 	

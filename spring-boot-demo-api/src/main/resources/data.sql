@@ -16,23 +16,23 @@ values
 (105, 'Robert','Whittaker','Robert.Whittaker@cf.com','Project Manager',50, '999-555-99', 'Somethig about Robert');
 
 
-insert into PROJECT_TASK (ID, TITLE, DESCRIPTION, STATUS, PRIORITY, DEADLINE_DATE)
+insert into PROJECT_TASK (ID, TITLE, DESCRIPTION, STATUS, PRIORITY,SUB_TASKS, DEADLINE_DATE)
 values
-(1001,'Analysis 1','Analysis Description','In progress','Medium', PARSEDATETIME('26-Jun-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en')),
-(1002,'Design 1','Design Description','Completed','Medium', PARSEDATETIME('30-Jul-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en')),
-(1003,'Developemnt 1','Developemnt Description','In progress','Medium', PARSEDATETIME('15-Dec-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en')),
-(1004,'Developemnt 2','Developemnt Description','Open','Medium', PARSEDATETIME('15-Dec-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en')),
-(1005,'Testing 1','Testing Description','Not Started','Medium', PARSEDATETIME('30-Jan-2019, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en'));
+(1001,'Analysis 1','Analysis Description','In progress','Medium',0, PARSEDATETIME('26-Jun-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en')),
+(1002,'Design 1','Design Description','Completed','Medium',0, PARSEDATETIME('30-Jul-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en')),
+(1003,'Developemnt 1','Developemnt Description','In progress','Medium',0, PARSEDATETIME('15-Dec-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en')),
+(1004,'Developemnt 2','Developemnt Description','Open','Medium',0, PARSEDATETIME('15-Dec-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en')),
+(1005,'Testing 1','Testing Description','Not Started','Medium',0, PARSEDATETIME('30-Jan-2019, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en'));
 
 
 insert into PROJECT_SUB_TASK (ID, PROJECT_TASK_ID, TITLE, DESCRIPTION, STATUS, DEADLINE_DATE)
 values
-(10001, 1001,'Analysis Sub Task 1','Analysis  Sub Task 1 Description','In progress',PARSEDATETIME('26-Jun-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en')),
-(10002, 1001,'Analysis Sub Task 2','Analysis  Sub Task 2 Description','Completed',PARSEDATETIME('04-Jun-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en')),
-(10003, 1003,'Developemnt 1 Sub Task 1','Developemnt 1  Sub Task 1 Description','Completed',PARSEDATETIME('30-Aug-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en')),
-(10004, 1003,'Developemnt 1 Sub Task 2','Developemnt 1  Sub Task 1 Description','In progress',PARSEDATETIME('30-Aug-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en')),
-(10005, 1004,'Analysis Sub Task 1','Analysis  Sub Task 1 Description','In progress',PARSEDATETIME('26-Jun-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en')),
-(10006, 1004,'Analysis Sub Task 2','Analysis  Sub Task 2 Description','In progress',PARSEDATETIME('26-Jun-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en'));
+(10001, 1001,'Analysis Sub Task 1','Sub Task 1 Description','In progress',PARSEDATETIME('26-Jun-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en')),
+(10002, 1001,'Analysis Sub Task 2','Analysing Use Case','Completed',PARSEDATETIME('04-Jun-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en')),
+(10003, 1003,'Dev 1 Sub-Task 1','Feature 1 development','Completed',PARSEDATETIME('30-Aug-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en')),
+(10004, 1003,'Dev 1 Sub-Task 2','Feature 2 development','In progress',PARSEDATETIME('30-Aug-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en')),
+(10005, 1004,'Dev 2 Sub-Task 1','Feature 3 development','In progress',PARSEDATETIME('26-Jun-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en')),
+(10006, 1004,'Testing Sub Task-2','Feature testing','In progress',PARSEDATETIME('26-Jun-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en'));
 
 insert into PROJECT_BUG (ID, TITLE, DESCRIPTION, STATUS, PRIORITY, DEADLINE_DATE)
 values

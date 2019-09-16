@@ -14,6 +14,7 @@ export class ProjectTasksComponent implements OnInit {
   projectSubTasks: ProjectSubTask[] = [];
   selectedProjectTask: ProjectTask;  // holds information on current ProjectTask clicked, to be able to know to which item add subtask
   searchTaskDescription: String;
+  deleteFlg : boolean;
 
 
   constructor(private projectTaskDataService : ProjectTaskDataService) { }
@@ -21,6 +22,7 @@ export class ProjectTasksComponent implements OnInit {
   ngOnInit() {
     this.getAllProjectTasks();
     this.getAllProjectSubTasks();
+    this.deleteFlg = false;
 
   }
 
@@ -82,13 +84,17 @@ export class ProjectTasksComponent implements OnInit {
 
   deleteProjectTask(deleteProjectTask : ProjectTask){
     if(confirm("Are you sure you want to delete Project Task?")){
+      this.deleteFlg = true;
         this.projectTaskDataService.deleteProjectTask(deleteProjectTask.id).subscribe(
           res => {
             let arrIndxofProjectTask = this.projectTasks.indexOf(deleteProjectTask);
             this.projectTasks.splice(arrIndxofProjectTask, 1)  //splice remove element from the array
+            {alert("Project Task successfully deleted.")
+            this.deleteFlg = false;
+          }
           },
           error => {alert("Error: Project Task could not be deleted.")}
-
+          
         );
     }
   }
@@ -128,7 +134,9 @@ export class ProjectTasksComponent implements OnInit {
   }
 
   selectProjectTask(projectTask: ProjectTask){
-      this.selectedProjectTask = projectTask;
+    
+    if(this.deleteFlg == false){
+          this.selectedProjectTask = projectTask;
       // Grab all the SubTasks for this Task only
       this.projectTaskDataService.getProjectSubTasksByProjectTask(projectTask.id).subscribe(
         res => {
@@ -136,6 +144,8 @@ export class ProjectTasksComponent implements OnInit {
         },
         error => {alert("Error: Sub-tasks for the Task could not be loaded.")}
       )
+    };  
+
   }
 
   selectAllProjectSubTasks(){

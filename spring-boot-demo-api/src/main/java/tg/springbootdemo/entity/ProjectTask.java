@@ -11,15 +11,11 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * 
@@ -64,11 +60,16 @@ public class ProjectTask extends ProjectIssue {
 	@Column(name="DEADLINE_DATE")
 	private Date deadlineDate;
 	
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "projectTask", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private List<ProjectSubTask> projectSubTasks;
-  
+	@Column(name="SUB_TASKS")
+	private int nbOfProjectSubTasks;
 	
+	    
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "projectTask", cascade= CascadeType.ALL,orphanRemoval = true)
+    private List<ProjectSubTask> projectSubTasks;
+    
+    
+
 	public ProjectTask() {	
 	}
 
@@ -105,10 +106,37 @@ public class ProjectTask extends ProjectIssue {
     public List<ProjectSubTask> getProjectSubTasks() {
         return projectSubTasks;
     }
+    
+    public void setProjectSubTasks(List<ProjectSubTask> theProjectSubTasks) {
+        this.projectSubTasks = theProjectSubTasks;
+    }
+    
+	// Bi-directional relationship method
+	public void addProjectSubTask(ProjectSubTask theProjectSubTask) {
+		if(projectSubTasks == null) {
+			projectSubTasks = new ArrayList<>();
+		}		
+		projectSubTasks.add(theProjectSubTask);
+		theProjectSubTask.setProjectTask(this);
+	}
+	
+	// Bi-directional relationship method
+	public void removeProjectSubTask(ProjectSubTask theProjectSubTask) {
+		if(projectSubTasks == null) {
+			return;
+		}
+		projectSubTasks.remove(theProjectSubTask);
+		theProjectSubTask.setProjectTask(this);
+	}
 
     public int getNbOfProjectSubTasks() {
         return this.projectSubTasks.size();
     }
+    
+    public void setNbOfProjectSubTasks(int nbOfProjectSubTasks) {
+        this.nbOfProjectSubTasks = nbOfProjectSubTasks;
+    }
+    
 	
 	public String getTitle() {
 		return title;
