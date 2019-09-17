@@ -9,6 +9,7 @@
 <table class="table">
 <thead>
     <tr>
+        <th></th>
         <th>Title</th>
         <th>Status</th>
         <th>Priority</th>
@@ -20,6 +21,7 @@
 <tbody>
     <!--Go through list of ProjectTasks list ..-->
     <tr *ngFor="let projectTask of projectTasks">
+        <td><i class="glyphicon glyphicon-file text-primary"></i></td>
         <td>{{projectTask.title}}</td>
         <td>{{projectTask.status}}</td>
         <td>{{projectTask.priority}}</td>

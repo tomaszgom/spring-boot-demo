@@ -12,7 +12,7 @@ export class ProjectSubTaskFilterPipe implements PipeTransform {
     if(description == null || description === ""){
       return projectSubTasks;
     }
-    return projectSubTasks.filter(s => s.description.includes(description) || s.description.includes(description));
+    return projectSubTasks.filter(s => s.description.toLocaleUpperCase().includes(description.toLocaleUpperCase()) || s.description.toLocaleUpperCase().includes(description.toLocaleUpperCase()));
   }
 
 }
