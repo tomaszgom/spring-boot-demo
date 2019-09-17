@@ -32,10 +32,11 @@ values
 (10003, 1001,'Analysis Sub Task 3','Analysing Use Case 2','Completed',PARSEDATETIME('04-Jun-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en')),
 (10004, 1003,'Dev 1 Sub-Task 1','Feature 1 development','Completed',PARSEDATETIME('30-Aug-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en')),
 (10005, 1003,'Dev 1 Sub-Task 2','Feature 2 development','In progress',PARSEDATETIME('30-Aug-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en')),
-(10006, 1004,'Dev 2 Sub-Task 1','Feature 3 development','In progress',PARSEDATETIME('26-Jun-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en')),
-(10007, 1004,'Testing Sub Task-2','Feature testing','In progress',PARSEDATETIME('26-Jun-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en')),
-(10008, 1004,'Testing Sub Task-2','Feature testing 2','In progress',PARSEDATETIME('26-Jun-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en')),
-(10009, 1002,'Design Sub Task-1','Designing stuff','In progress',PARSEDATETIME('26-Jun-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en'));
+(10006, 1004,'Dev 2 Sub-Task 1','Feature development 0','Open',PARSEDATETIME('26-Jun-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en')),
+(10007, 1004,'Dev 2 Sub Task 2','Feature development 1','In progress',PARSEDATETIME('26-Jun-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en')),
+(10008, 1004,'Dev 2 Sub Task 3','Feature development 2','Completed',PARSEDATETIME('26-Jun-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en')),
+(10009, 1004,'Dev 2 Sub Task 4','Feature development 3','In progress',PARSEDATETIME('26-Jun-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en')),
+(10010, 1002,'Design Sub Task-1','Designing stuff','In progress',PARSEDATETIME('26-Jun-2018, 00:00:00 AM','dd-MMM-yyyy, hh:mm:ss a','en'));
 
 
 insert into PROJECT_BUG (ID, TITLE, DESCRIPTION, STATUS, PRIORITY, DEADLINE_DATE)
