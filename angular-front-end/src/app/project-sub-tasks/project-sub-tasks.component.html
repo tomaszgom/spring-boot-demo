@@ -1,4 +1,4 @@
-<div class="card bg-secondary" style="border:4px solid white;">
+<div class="card bg-info pull-right" style="border:4px solid white;">
     <div class="card-header">
       <!-- Sub Task Title class="input-label-lg" -->
       <input type="text"
@@ -18,6 +18,6 @@
                 (change)="updateProjectSubTask()"></textarea>
       <strong class="text-dark" style="font-size: small">{{projectSubTask.deadLineDate | date:'dd-MM-yyy HH:mm'}}</strong>
     </div>
-    <div class="card-footer" style="font-size: small">{{projectSubTask.status}}</div>
+    <div class="card-footer" style="font-size: small">Status: {{projectSubTask.status}}</div>
   </div>
   

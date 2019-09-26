@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProjectTaskDataService } from '../service/data/projectTask/project-task-data.service';
 import { ProjectTask } from '../project-tasks/model/project-task';
+import { TeamMember } from '../team-members-list/model/team-member';
 
 
 @Component({
@@ -21,7 +22,8 @@ export class ProjectTasksListComponent implements OnInit {
   
     // Getting all the Issues on init
     ngOnInit() {
-      this.refreshProjectTasksList()
+      this.refreshProjectTasksList();
+  
     }
 
     refreshProjectTasksList(){

@@ -7,15 +7,15 @@
                class="form-control"
                style="width: 100%;"
                placeholder="Search Sub-tasks descriptions...">
-      </div>
-      <div class="col-md-4">
-   <!--     <button type="buton"
+      </div>  
+      <div class="col-md-3">
+     <!--    <button type="buton"
                 (click)="createProjectTask()"
                 class="btn btn-primary pull-right"
                 style="margin-left:12px;">
                 <i class="glyphicon glyphicon-plus-sign"></i>&nbsp; Add Project Task
         </button>
-        <button type="button"
+       <button type="button"
                 (click)="createProjectSubTask(selectedProjectTask.id)"
                 [disabled]="selectedProjectTask == null"
                 class="btn btn-primary pull-right"
@@ -25,19 +25,36 @@
       </div>
   
     </div>
+
+    <br>
+    <button type="button"
+    (click)="createProjectSubTask(selectedProjectTask.id)"
+    [disabled]="selectedProjectTask == null"
+    class="btn btn-success"
+    style="margin-left:10px;">
+    <i class="glyphicon glyphicon-plus-sign"></i>&nbsp; Add Sub-task
+    </button> 
+
   
-    <!-- Project SubTask content -->
+    <!-- Project Task content -->
     <div class="row" style="margin-top: 28px;">
+
       <!-- Project Tasks Menu -->
-      <div class="col-md-3">
+      <div class="col-md-4">
         <br>
         <div class="list-group list-group-flush">
-          <a (click)="selectAllProjectSubTasks()" class="list-group-item list-group-item-action"> Project Tasks
-          </a>
+            <h4>
+              <a style="width: 50%"> Project Task</a>
+              <a style="margin-left: 74px;"> Assigned to</a>
+            </h4>
+         <!-- <a (click)="selectAllProjectSubTasks()" class="list-group-item list-group-item-action"> 
+            Project Taskss
+          </a>-->
           <!-- Project Task List -->
           <a *ngFor="let projectTask of projectTasks" (click)="selectProjectTask(projectTask)" class="list-group-item list-group-item-action">
               <i class="glyphicon glyphicon-file text-primary"></i>&nbsp;
-            <input [(ngModel)]="projectTask.title" (change)="updateProjectTask(projectTask)" type="text" class="input-label" style="width: 80%"/>
+            <input [(ngModel)]="projectTask.title" (change)="updateProjectTask(projectTask)" type="text" class="input-label" style="width: 50%"/>
+            <a>{{projectTask.teamMember.firstName}} {{projectTask.teamMember.lastName}}</a>        
             <a (click)="deleteProjectTask(projectTask)" class="pull-right text-danger">
               <i class="glyphicon glyphicon-remove-circle"></i>
             </a>
@@ -45,13 +62,15 @@
         </div>
       </div>
   
+
+
       <!-- SubTasks Panel -->
-      <div class="col-md-9">
+      <div class="col-md-8">
         <div class="row">
           <div class="col-md-12">
             <!-- Message if there are no Subtasks -->
             <h3 *ngIf="selectedProjectTask != null">{{selectedProjectTask.name}}</h3>
-            <h3 *ngIf="selectedProjectTask == null">All Task</h3>
+            <h3 *ngIf="selectedProjectTask == null">All Sub-tasks</h3>
             <p *ngIf="this.projectSubTasks.length === 0">No Sub-tasks for this Project Tasks.</p>
           </div>
         </div>

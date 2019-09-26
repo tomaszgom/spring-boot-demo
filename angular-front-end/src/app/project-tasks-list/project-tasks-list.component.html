@@ -2,7 +2,17 @@
 <h2>Project Tasks List
 
 </h2>
+<br>
+
+<button type="button"
+(click)="createProjectSubTask(selectedProjectTask.id)"
+[disabled]="selectedProjectTask == null"
+class="btn btn-success"
+style="margin-left:10px;">
+<i class="glyphicon glyphicon-plus-sign"></i>&nbsp; Add Task
+</button> 
 <br><br>
+
 <div class="alert alert-success" *ngIf='message'>{{message}}</div>
 
 <div class="container">
@@ -13,8 +23,10 @@
         <th>Title</th>
         <th>Status</th>
         <th>Priority</th>
-       <!-- <th>Dead Line Date</th> -->
-        <th>Description</th>
+        <!-- <th>Dead Line Date</th> -->
+        <th>Description</th>        
+        <th>Assigned To</th>
+        <th></th>
         <th></th>
     </tr>
 </thead>
@@ -25,9 +37,11 @@
         <td>{{projectTask.title}}</td>
         <td>{{projectTask.status}}</td>
         <td>{{projectTask.priority}}</td>
-       <!-- <td>{{projectTask.deadLineDate}}</td> -->
+        <!-- <td>{{projectTask.deadLineDate}}</td> -->
         <td>{{projectTask.description}}</td>
-        <td><button (click)="deleteProjectTask(projectTask.id)" class="btn btn-success">Delete</button></td>
+        <td>{{projectTask.teamMember.firstName}} {{projectTask.teamMember.lastName}}</td>
+        <td><button (click)="deleteProjectTask(projectTask.id)" class="btn btn-success">Edit</button></td>
+        <td><button (click)="deleteProjectTask(projectTask.id)" class="btn btn-warning">Delete</button></td>
     </tr>
 </tbody>
 </table>
