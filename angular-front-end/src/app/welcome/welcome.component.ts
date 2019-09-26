@@ -19,7 +19,7 @@ export class WelcomeComponent implements OnInit {
   }
 
   butHandleWelcomeContinue() {
-        this.router.navigate(['issue-list'])
+        this.router.navigate(['project-tasks'])
   }
 
 }

@@ -1,0 +1,33 @@
+<br>
+<h2>Team Members
+
+</h2>
+<br><br>
+<div class="alert alert-success" *ngIf='message'>{{message}}</div>
+
+<div class="container">
+<table class="table">
+<thead>
+    <tr>
+        <th></th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email Address</th>
+        <th>Comment</th>
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+    <!--Go through list of issues list ..-->
+    <tr *ngFor="let issue of issues">
+        <td><i class="glyphicon glyphicon-user text-primary"></i></td>
+        <td>{{issue.firstName}}</td>
+        <td>{{issue.lastName}}</td>
+        <td>{{issue.emailAddress}}</td>
+        <td>{{issue.contactPurpose}}</td>
+        <td><button (click)="deleteIssue(issue.id)" class="btn btn-success">Delete</button></td>
+    </tr>
+</tbody>
+</table>
+</div>
+

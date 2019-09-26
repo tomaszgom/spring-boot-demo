@@ -11,11 +11,17 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * 
@@ -37,13 +43,7 @@ public class ProjectTask extends ProjectIssue {
 	//@SequenceGenerator(name="entity_seq_gen", sequenceName="hr.PROJECT_TASK_SEQ")
 	@Column(name="ID")
 	private int id;
-	
-//	@ManyToOne (fetch = FetchType.LAZY,
-//			cascade= {CascadeType.ALL,})
-//	@JoinColumn(name="TEAM_MEMBER_ID", nullable=false)
-//	private TeamMember teamMember;
-	
-	
+		
 	@NotNull
 	@Column(name="TITLE")
 	private String title;
@@ -65,16 +65,24 @@ public class ProjectTask extends ProjectIssue {
     private List<ProjectSubTask> projectSubTasks;
     
    
+    //@JsonIgnore
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @ManyToOne(fetch = FetchType.LAZY, 	cascade= CascadeType.ALL)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "TEAM_MEMBER_ID", nullable=false)
+    private TeamMember teamMember;
+	
 	public ProjectTask() {	
 	}
 
-	public ProjectTask(String title, String description, String status, String priority, Date deadlineDate) {
+	public ProjectTask(String title, String description, String status, String priority, Date deadlineDate, TeamMember theTeamMember) {
 		this.title = title;
 		this.description = description;
 		this.status = status;
 		this.priority = priority;
 		this.deadlineDate = deadlineDate;
 		this.projectSubTasks = new ArrayList<>();
+		this.teamMember = theTeamMember;
 	}
 
 	public int getId() {
@@ -84,18 +92,17 @@ public class ProjectTask extends ProjectIssue {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	
-//	public TeamMember getTeamMember() {
-//		return teamMember;
-//	}
+		
+	public TeamMember getTeamMember() {
+		return teamMember;
+	}
 //	public int getTeamMemberID() {
 //		return teamMember.getId();
 //	}
-//
-//	public void setTeamMember(TeamMember teamMember) {
-//		this.teamMember = teamMember;
-//	}
+
+	public void setTeamMember(TeamMember teamMember) {
+		this.teamMember = teamMember;
+	}
 
 	
     public List<ProjectSubTask> getProjectSubTasks() {
@@ -123,7 +130,6 @@ public class ProjectTask extends ProjectIssue {
 		projectSubTasks.remove(theProjectSubTask);
 		theProjectSubTask.setProjectTask(this);
 	}
-
 	
 	public String getTitle() {
 		return title;
@@ -164,7 +170,7 @@ public class ProjectTask extends ProjectIssue {
 	public void setDeadlineDate(Date deadlineDate) {
 		this.deadlineDate = deadlineDate;
 	}
-
+	
 	
 	
 }

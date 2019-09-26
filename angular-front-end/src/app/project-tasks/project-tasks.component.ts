@@ -49,12 +49,13 @@ export class ProjectTasksComponent implements OnInit {
 
   createProjectTask(){
     let newProjectTask : ProjectTask = {
-      id : null,
-      title : 'New Project Task',
-      description : 'Description',
-      status : 'Open',
-      priority : 'Low',
-      deadLineDate : new Date()
+      id: null,
+      title: 'New Project Task',
+      description: 'Description',
+      status: 'Open',
+      priority: 'Low',
+      deadLineDate: new Date(),
+      teamMember: null
     }
 
     this.projectTaskDataService.postProjectTask(newProjectTask).subscribe(

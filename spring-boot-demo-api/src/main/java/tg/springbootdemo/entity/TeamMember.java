@@ -1,12 +1,20 @@
 package tg.springbootdemo.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * 
@@ -50,9 +58,11 @@ public class TeamMember {
 	@Column(name = "NOTE")
 	private String note;
 
-//	@OneToMany(mappedBy="teamMember", // reference to teamMember field in ProjectTask class
-//				cascade= {CascadeType.ALL,},orphanRemoval = true)//@JoinColumn( name="TEAM_MEMBER_ID")
-//	private List<ProjectTask> projectTasksList;
+	// mappedBy = "projectTask" : Reference to teamMember field in ProjectTask class
+	// @JoinColumn( name="TEAM_MEMBER_ID")
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "teamMember", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<ProjectTask> projectTasks;
 
 	public TeamMember() {
 	}
@@ -69,32 +79,32 @@ public class TeamMember {
 	}
 
 	// Bi-directional relationship method
-//	public void addProjectTask(ProjectTask projectTask) {
-//		if(projectTasksList == null) {
-//			projectTasksList = new ArrayList<>();
-//		}
-//		
-//		projectTasksList.add(projectTask);
-//		projectTask.setTeamMember(this);  // to be activated when joining entities
-//	}
+	public void addProjectTask(ProjectTask projectTask) {
+		if (projectTasks == null) {
+			projectTasks = new ArrayList<>();
+		}
+
+		projectTasks.add(projectTask);
+		projectTask.setTeamMember(this); // activated after entities were joined
+	}
 
 	// Bi-directional relationship method
-//	public void removeProjectTask(ProjectTask projectTask) {
-//		if(projectTasksList == null) {
-//			return;
-//		}
-//		
-//		projectTasksList.remove(projectTask);
-//		projectTask.setTeamMember(this);	// to be activated when joining entities
-//	}
+	public void removeProjectTask(ProjectTask projectTask) {
+		if (projectTasks == null) {
+			return;
+		}
 
-//	public List<ProjectTask> getProjectTasks(){
-//		return projectTasksList;
-//	}
-//	
-//	public void setProjectTasks(List<ProjectTask> projectTasksList) {
-//		this.projectTasksList = projectTasksList;
-//	}
+		projectTasks.remove(projectTask);
+		projectTask.setTeamMember(this); // activated after entities were joined
+	}
+
+	public List<ProjectTask> getProjectTasks() {
+		return projectTasks;
+	}
+
+	public void setProjectTasks(List<ProjectTask> projectTasksList) {
+		this.projectTasks = projectTasksList;
+	}
 
 	public int getId() {
 		return id;

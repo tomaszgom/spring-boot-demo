@@ -14,11 +14,8 @@ package tg.springbootdemo.entity;
 public class ProjectIssue {
 	
 	private int id;
-	
 	private String title;
-	
 	private String description;
-	
 	
 	public ProjectIssue() {	
 		
