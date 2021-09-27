@@ -6,9 +6,7 @@ import java.util.Optional;
 import tg.springbootdemo.entity.ProjectSubTask;
 
 /**
- * 
  * Service Interface defining the methods and interactions
- *
  */
 
 import tg.springbootdemo.entity.ProjectTask;
@@ -24,7 +22,4 @@ public interface ProjectTaskService {
 	public void deleteTaskById(int theId);
 	
 	public List<ProjectSubTask> findAllByProjectTask(int theProjectTaskId);
-	
-	
-
 }

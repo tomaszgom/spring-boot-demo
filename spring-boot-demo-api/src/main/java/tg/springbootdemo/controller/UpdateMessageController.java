@@ -16,30 +16,30 @@ import javax.validation.ValidationException;
 @RequestMapping("/send-update")
 @CrossOrigin
 public class UpdateMessageController {
-	
-	// Injects sender
+
+    // Injects sender
     private UpdateMsgSender updateMsgSender;
 
     public UpdateMessageController(UpdateMsgSender updateMsgSender) {
         this.updateMsgSender = updateMsgSender;
     }
 
-    
+
     // Receive POST with updateMessage Model and pass email detail to Message Sender
     @PostMapping
     public void sendUpdate(@RequestBody UpdateMessage updateMessage,
-                             BindingResult bindingResult){
-    	        
-    	
-        if(bindingResult.hasErrors()){
+                           BindingResult bindingResult) {
+
+
+        if (bindingResult.hasErrors()) {
             throw new ValidationException("Update has not been sent, it contains errors.");
         }
 
         this.updateMsgSender.sendUpdateEmail(
-        		updateMessage.getFromName(),
-        		updateMessage.getSubject(),
-        		updateMessage.getRecipientEmailAddr(),
-        		updateMessage.getMessageBody()
-        		);
+                updateMessage.getFromName(),
+                updateMessage.getSubject(),
+                updateMessage.getRecipientEmailAddr(),
+                updateMessage.getMessageBody()
+        );
     }
 }

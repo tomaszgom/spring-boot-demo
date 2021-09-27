@@ -5,8 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import tg.springbootdemo.entity.ClientRequest;
 
-
 @Repository
 public interface ClientRequestRepository extends JpaRepository<ClientRequest, Integer>{
-	
 }

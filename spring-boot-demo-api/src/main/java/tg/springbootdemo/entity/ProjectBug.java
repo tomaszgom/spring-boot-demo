@@ -111,6 +111,4 @@ public class ProjectBug extends ProjectIssue {
 		return "ProjectBug [id=" + id + ", title=" + title + ", description=" + description + ", status=" + status
 				+ ", priority=" + priority + ", deadlineDate=" + deadlineDate + "]";
 	}
-
-	
 }

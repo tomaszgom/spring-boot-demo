@@ -21,75 +21,67 @@ import tg.springbootdemo.entity.ProjectBug;
 import tg.springbootdemo.service.ProjectBugService;
 
 /**
- * 
- * Controller Class for Project Bugs handling resource API requests received
- *
+ * Controller handling Project Bugs  resourc calls
  */
 
-@CrossOrigin(origins="http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/project-bugs")
 public class ProjectBugController {
-	
-	private ProjectBugService projectBugService;
-	
-	@Autowired
-	public ProjectBugController(ProjectBugService theProjectBugService) {		
-		projectBugService = theProjectBugService;
-	}
 
-	// Return the list of Project Bugs
-	@GetMapping ("/all")
-	public List<ProjectBug> findAll(){
-		return projectBugService.findAll();
-	}
-	
-	// Find Project Bug by Id
-	@GetMapping("/{projectBugId}")
-	public ProjectBug findProjectBugById(@PathVariable int projectBugId ){
-		
-		Optional<ProjectBug> theProjectBug = projectBugService.findById(projectBugId);
+    private ProjectBugService projectBugService;
 
-		if(theProjectBug.isEmpty()) {
-			throw new RuntimeException("Employee id not found - " + projectBugId);
-		}
-		return theProjectBug.get();
-	}
-	
-	//Add new Project Bug
-	@PostMapping("/new")
-	public ProjectBug addProjectBug(@RequestBody ProjectBug theProjectBug,
-			BindingResult bindingResult) {
-		
+    @Autowired
+    public ProjectBugController(ProjectBugService theProjectBugService) {
+        projectBugService = theProjectBugService;
+    }
+
+    @GetMapping("/all")
+    public List<ProjectBug> findAllProjectBugs() {
+        return projectBugService.findAll();
+    }
+
+    @GetMapping("/{projectBugId}")
+    public ProjectBug findProjectBugById(@PathVariable int projectBugId) {
+        Optional<ProjectBug> theProjectBug = projectBugService.findById(projectBugId);
+
+        if (theProjectBug.isEmpty()) {
+            throw new RuntimeException("Employee id not found - " + projectBugId);
+        }
+        return theProjectBug.get();
+    }
+
+    @PostMapping("/new")
+    public ProjectBug createProjectBug(@RequestBody ProjectBug theProjectBug,
+                                       BindingResult bindingResult) {
+
         if (bindingResult.hasErrors()) {
             throw new ValidationException();
         }
-        
-		theProjectBug.setId(0);	
-		projectBugService.saveBug(theProjectBug);
-		return theProjectBug;
-	}
-	
-	// Update Project Bug
-	@PutMapping("/update")
-	public ProjectBug updateProjectBug(@RequestBody ProjectBug theProjectBug) {
-			
-		projectBugService.saveBug(theProjectBug);
-		return theProjectBug;
-	}
-	
-	@DeleteMapping("/{projectBugId}")
-	public String deleteProjectBug(@PathVariable int projectBugId ){
-		Optional<ProjectBug> theProjectBug = projectBugService.findById(projectBugId);
 
-		if(theProjectBug.isEmpty()) {
-			throw new RuntimeException("Project Bug id not found - " + projectBugId);
-		}
-		
-		projectBugService.deleteBugById(projectBugId);
-		return "Project Bug Id '" + theProjectBug + "' has been deleted.";
-	}
-	
-	
-	
+        theProjectBug.setId(0);
+        projectBugService.saveBug(theProjectBug);
+        return theProjectBug;
+    }
+
+    @PutMapping("/update")
+    public ProjectBug updateProjectBug(@RequestBody ProjectBug theProjectBug) {
+
+        projectBugService.saveBug(theProjectBug);
+        return theProjectBug;
+    }
+
+    @DeleteMapping("/{projectBugId}")
+    public String deleteProjectBug(@PathVariable int projectBugId) {
+        Optional<ProjectBug> theProjectBug = projectBugService.findById(projectBugId);
+
+        if (theProjectBug.isEmpty()) {
+            throw new RuntimeException("Project Bug id not found - " + projectBugId);
+        }
+
+        projectBugService.deleteBugById(projectBugId);
+        return "Project Bug Id '" + theProjectBug + "' has been deleted.";
+    }
+
+
 }

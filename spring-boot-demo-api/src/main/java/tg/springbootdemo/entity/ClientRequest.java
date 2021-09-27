@@ -7,9 +7,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.Size;
 
 /**
- * 
  * ClientRequest ORM object, mapped with database, used to handle managing data within application
- *
  */
 
 
@@ -110,14 +108,4 @@ public class ClientRequest {
 			return false;
 		return true;
 	}
-	
-	
-	
-
-
-
-
-
-	
-	
 }

@@ -1,15 +1,10 @@
 package tg.springbootdemo.entity;
 
 /**
- * 
- * 
  * @BusinessLogic: 
  * Project Issue is a core part of Project. It is super class for all project items representing different
  * types of work that needs to be assigned and completed. Different types of issue inherit from issue.
- *
  */
-
-
 
 public class ProjectIssue {
 	
@@ -17,8 +12,7 @@ public class ProjectIssue {
 	private String title;
 	private String description;
 	
-	public ProjectIssue() {	
-		
+	public ProjectIssue() {
 	}
 
 	public int getId() {
@@ -28,8 +22,7 @@ public class ProjectIssue {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	
+
 	public String getTitle() {
 		return title;
 	}
@@ -45,7 +38,4 @@ public class ProjectIssue {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-	
-	
 }

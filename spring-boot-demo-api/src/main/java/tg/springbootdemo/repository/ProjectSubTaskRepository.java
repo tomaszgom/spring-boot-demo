@@ -14,5 +14,4 @@ public interface ProjectSubTaskRepository {
 	public void saveSubTask(ProjectSubTask theProjectSubTask);
 
 	public void deleteSubTaskById(int theId);
-	
 }

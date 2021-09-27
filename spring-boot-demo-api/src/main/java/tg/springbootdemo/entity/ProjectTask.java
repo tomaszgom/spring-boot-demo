@@ -27,12 +27,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * 
  * ORM object, mapped with database, used to handle managing data within application.
  * 
- * @BusinessLogic: 
+ * BusinessLogic:
  * Project Task is a part of Project, it is activity, created, assigned
  * to team member, requiring work and completion.
  *
  */
-
 
 @Entity
 //@Table(name="PROJECT_TASK")
@@ -63,8 +62,7 @@ public class ProjectTask extends ProjectIssue {
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "projectTask", cascade= CascadeType.ALL,orphanRemoval = true)
     private List<ProjectSubTask> projectSubTasks;
-    
-   
+
     //@JsonIgnore
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToOne(fetch = FetchType.LAZY, 	cascade= CascadeType.ALL)
@@ -96,15 +94,11 @@ public class ProjectTask extends ProjectIssue {
 	public TeamMember getTeamMember() {
 		return teamMember;
 	}
-//	public int getTeamMemberID() {
-//		return teamMember.getId();
-//	}
 
 	public void setTeamMember(TeamMember teamMember) {
 		this.teamMember = teamMember;
 	}
 
-	
     public List<ProjectSubTask> getProjectSubTasks() {
         return projectSubTasks;
     }
@@ -170,7 +164,4 @@ public class ProjectTask extends ProjectIssue {
 	public void setDeadlineDate(Date deadlineDate) {
 		this.deadlineDate = deadlineDate;
 	}
-	
-	
-	
 }

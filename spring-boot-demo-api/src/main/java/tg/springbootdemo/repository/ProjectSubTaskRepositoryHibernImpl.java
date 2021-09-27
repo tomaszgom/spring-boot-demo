@@ -11,20 +11,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import tg.springbootdemo.entity.ProjectSubTask;
-import tg.springbootdemo.entity.ProjectTask;
 
 /**
  * @Repository
- * 
  * Project Sub Task Data Access Object implementation Repository
  * Using Native Hibernate API
- *
  */
 
 @Repository
 public class ProjectSubTaskRepositoryHibernImpl implements ProjectSubTaskRepository {
 
-	
 	private EntityManager entityManager;
 
 	@Autowired
@@ -34,8 +30,6 @@ public class ProjectSubTaskRepositoryHibernImpl implements ProjectSubTaskReposit
 	
 	@Override
 	public List<ProjectSubTask> findAll() {
-		
-		// Get current Hibernate session
 		Session currentSession = entityManager.unwrap(Session.class);
 		Query<ProjectSubTask> theQuery = currentSession.createQuery("from ProjectSubTask", ProjectSubTask.class);
 		List<ProjectSubTask> projectSubTasks = theQuery.getResultList();		
@@ -58,22 +52,12 @@ public class ProjectSubTaskRepositoryHibernImpl implements ProjectSubTaskReposit
 
 	@Override
 	public void deleteSubTaskById(int theId) {
-
-		Session currentSession = entityManager.unwrap(Session.class);		
-		
-		// persistentInstance of Project Sub Task
+		Session currentSession = entityManager.unwrap(Session.class);
 		ProjectSubTask theProjectSubTask = currentSession.load(ProjectSubTask.class, theId);
-	    if (theProjectSubTask != null) {
-	    	currentSession.delete(theProjectSubTask);	    	
-	        return;
-	    }    
-	    return;
-		
+		if (theProjectSubTask != null) {
+			currentSession.delete(theProjectSubTask);
 		}
-
-	
-
-
+	}
 }
 
 

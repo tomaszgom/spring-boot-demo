@@ -9,21 +9,16 @@ import org.springframework.transaction.annotation.Transactional;
 import tg.springbootdemo.entity.TeamMember;
 import tg.springbootdemo.repository.TeamMemberRepository;
 
-
 /**
- * 
  * Team Member Service (business logic) layer
- *
  */
 
 @Service
 public class TeamMemberServiceImpl implements TeamMemberService {
 	
 	private TeamMemberRepository teamMemberRepository;
-	
-	
-	public TeamMemberServiceImpl() {	
-		
+
+	public TeamMemberServiceImpl() {
 	}
 	
 	@Autowired
@@ -55,5 +50,4 @@ public class TeamMemberServiceImpl implements TeamMemberService {
 	public void deleteTeamMemberById(int theId) {
 		teamMemberRepository.deleteById(theId);
 	}
-
 }

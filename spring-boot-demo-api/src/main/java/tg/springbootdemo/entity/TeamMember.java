@@ -17,10 +17,8 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
- * 
  * Team Member ORM object, mapped with database, used to handle managing data
  * within application
- *
  */
 
 @Entity
@@ -29,7 +27,6 @@ public class TeamMember {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO) // , generator="entity_seq_gen")
-	// @SequenceGenerator(name="entity_seq_gen", sequenceName="hr.TEAM_MEMBER_SEQ")
 	@Column(name = "ID")
 	private int id;
 
@@ -179,5 +176,4 @@ public class TeamMember {
 		return "TeamMember [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", EmailAddress="
 				+ emailAddress + ", points=" + points + ", projectTasksList=" + "]";
 	}
-
 }

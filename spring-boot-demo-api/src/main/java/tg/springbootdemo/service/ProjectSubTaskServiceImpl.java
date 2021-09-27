@@ -13,9 +13,7 @@ import tg.springbootdemo.entity.ProjectSubTask;
 import tg.springbootdemo.repository.ProjectSubTaskRepository;
 
 /**
- * 
  * Service layer for handling ProjectSubTask actions
- *
  */
 
 @Service
@@ -27,8 +25,7 @@ public class ProjectSubTaskServiceImpl implements ProjectSubTaskService {
 	public ProjectSubTaskServiceImpl(ProjectSubTaskRepository theProjectSubTaskDAO) {
 		projectSubTaskDAO = theProjectSubTaskDAO;
 	}
-	
-	
+
 	@Override
 	@Transactional
 	public List<ProjectSubTask> findAll() {
@@ -38,29 +35,23 @@ public class ProjectSubTaskServiceImpl implements ProjectSubTaskService {
 	@Override
 	@Transactional
 	public ProjectSubTask findById(int theId) {
-		
 		Optional<ProjectSubTask> projectSubTask = projectSubTaskDAO.findById(theId);		
 		if (projectSubTask.isPresent()) {
 			return projectSubTask.get();        
 		} else {
 			throw new EntityNotFoundException();
 		}
-
 	}
 
 	@Override
 	@Transactional
 	public void saveTask(ProjectSubTask theProjectSubTask) {
 		projectSubTaskDAO.saveSubTask(theProjectSubTask);
-
 	}
 
 	@Override
 	@Transactional
 	public void deleteTaskById(int theId) {
 		projectSubTaskDAO.deleteSubTaskById(theId);
-
 	}
-	
-
 }

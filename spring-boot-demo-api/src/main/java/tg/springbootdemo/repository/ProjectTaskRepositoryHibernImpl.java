@@ -14,11 +14,9 @@ import tg.springbootdemo.entity.ProjectSubTask;
 import tg.springbootdemo.entity.ProjectTask;
 
 /**
- * @Repository
- * 
+ * Repository
  * Project Task Data Access Object implementation Repository
  * Using Native Hibernate API
- *
  */
 
 @Repository
@@ -34,7 +32,7 @@ public class ProjectTaskRepositoryHibernImpl implements ProjectTaskRepository {
 	@Override
 	public List<ProjectTask> findAll() {
 		
-		// Get current Hibernate session
+		/* Get current Hibernate session */
 		Session currentSession = entityManager.unwrap(Session.class);		
 		Query<ProjectTask> theQuery = currentSession.createQuery("from ProjectTask", ProjectTask.class);
 		List<ProjectTask> projectTasks = theQuery.getResultList();
@@ -55,19 +53,16 @@ public class ProjectTaskRepositoryHibernImpl implements ProjectTaskRepository {
 		Session currentSession = entityManager.unwrap(Session.class);	
 		currentSession.saveOrUpdate(theProjectTask);		
 	}
-	
+
 	@Override
 	public void deleteTaskById(int theId) {
-	
-		Session currentSession = entityManager.unwrap(Session.class);		
-		
-		// persistentInstance of Project Task
+		Session currentSession = entityManager.unwrap(Session.class);
+
+		/* persistentInstance of Project Task */
 		ProjectTask theProjectTask = currentSession.load(ProjectTask.class, theId);
-	    if (theProjectTask != null) {
-	    	currentSession.delete(theProjectTask);	    	
-	        return;
-	    }    
-	    return;
+		if (theProjectTask != null) {
+			currentSession.delete(theProjectTask);
+		}
 	}
 	
 	@Override
@@ -77,8 +72,7 @@ public class ProjectTaskRepositoryHibernImpl implements ProjectTaskRepository {
 		Query<ProjectSubTask> theQuery = null;
         theQuery = currentSession.createQuery("from ProjectSubTask where projectTask=:theProjectTask", ProjectSubTask.class);
     	theQuery.setParameter("theProjectTask", projectTask);
-        //theQuery.setParameter("projectTaskId", projectTask.getId());
-        
+
         List<ProjectSubTask> projectSubTasksResult = theQuery.getResultList();    
          return projectSubTasksResult;		
 	}

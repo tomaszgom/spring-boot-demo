@@ -6,9 +6,7 @@ import java.util.Optional;
 import tg.springbootdemo.entity.ProjectSubTask;
 
 /**
- * 
  * Service Interface defining the methods and interactions
- *
  */
 
 public interface ProjectSubTaskService {

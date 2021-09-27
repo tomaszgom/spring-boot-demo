@@ -18,9 +18,7 @@ import tg.springbootdemo.entity.TeamMember;
 import tg.springbootdemo.service.TeamMemberService;
 
 /**
- * 
  * Team Member Entity Controller exposed end points to work with front end requests
- *
  */
 
 @CrossOrigin(origins="http://localhost:4200")
@@ -62,7 +60,4 @@ public class TeamMemberController {
 		 teamMemberService.deleteTeamMemberById(teamMemberId);
 			 return ResponseEntity.noContent().build();
 	}
-		
-
-	
 }

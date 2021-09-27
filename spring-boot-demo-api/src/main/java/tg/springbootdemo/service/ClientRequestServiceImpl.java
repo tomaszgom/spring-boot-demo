@@ -9,21 +9,16 @@ import org.springframework.transaction.annotation.Transactional;
 import tg.springbootdemo.entity.ClientRequest;
 import tg.springbootdemo.repository.ClientRequestRepository;
 
-
 /**
- * 
  * Client Request Service (business logic) layer
- *
  */
 
 @Service
 public class ClientRequestServiceImpl implements ClientRequestService {
 	
 	private ClientRequestRepository clientRequestRepository;
-	
-	
-	public ClientRequestServiceImpl() {	
-		
+
+	public ClientRequestServiceImpl() {
 	}
 	
 	@Autowired
@@ -55,5 +50,4 @@ public class ClientRequestServiceImpl implements ClientRequestService {
 	public void deleteClientRequestById(int theId) {
 		clientRequestRepository.deleteById(theId);
 	}
-
 }

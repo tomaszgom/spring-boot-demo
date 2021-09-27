@@ -18,54 +18,49 @@ import tg.springbootdemo.entity.ClientRequest;
 import tg.springbootdemo.service.ClientRequestService;
 
 /**
- * 
- * ClientRequestController exposed end points to work with front end requests
- *
+ * Controller handling Client request issues,
+ * exposed end points to communicate with front-end calls
  */
 
-@CrossOrigin(origins="http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class ClientRequestController {
-	
-	private ClientRequestService clientRequestService;
-	
-	@Autowired
-	public ClientRequestController(ClientRequestService theClientRequestService) {		
-		clientRequestService = theClientRequestService;
-	}
 
-	// Return the list of Client Request
-	@GetMapping ("/issues")
-	public List<ClientRequest> getAll(){
-		return clientRequestService.findAll();
-	}
-	
-	// Create new Client Request
-	@PostMapping("/issues")
-	public ResponseEntity<Void> addClientRequest(@RequestBody ClientRequest theClientRequest) {
-		
-		theClientRequest.setId(0);	
-		ClientRequest createdClientRequest = clientRequestService.saveClientRequest(theClientRequest);
-		
-		// Taking current request path, the url of created resource, appending id
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-			.path("/{id}").buildAndExpand(createdClientRequest.getId()).toUri();
-		
-		// Returning status call created, location of created resource
-		return  ResponseEntity.created(uri).build();
-	}
-	
-	// Delete Client Request
-	@DeleteMapping("/issue/{clientRequestId}")
-	public ResponseEntity<Void> deleteClientRequest(@PathVariable int clientRequestId ){
-				
-		 clientRequestService.deleteClientRequestById(clientRequestId);
-			 return ResponseEntity.noContent().build();
-	}
-		
-	@GetMapping ("/test")
-	public String getTestString(){
-		return "Test was successful!";
-	}
-	
+    private ClientRequestService clientRequestService;
+
+    @Autowired
+    public ClientRequestController(ClientRequestService theClientRequestService) {
+        clientRequestService = theClientRequestService;
+    }
+
+    @GetMapping("/issues")
+    public List<ClientRequest> getAllClientRequests() {
+        return clientRequestService.findAll();
+    }
+
+    @PostMapping("/issues")
+    public ResponseEntity<Void> createClientRequest(@RequestBody ClientRequest theClientRequest) {
+
+        theClientRequest.setId(0);
+        ClientRequest createdClientRequest = clientRequestService.saveClientRequest(theClientRequest);
+
+        // Taking current request path, the url of created resource, appending id
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}").buildAndExpand(createdClientRequest.getId()).toUri();
+
+        return ResponseEntity.created(uri).build();
+    }
+
+    @DeleteMapping("/issue/{clientRequestId}")
+    public ResponseEntity<Void> deleteClientRequest(@PathVariable int clientRequestId) {
+
+        clientRequestService.deleteClientRequestById(clientRequestId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/test")
+    public String healthCheck() {
+        return "Successful!";
+    }
+
 }

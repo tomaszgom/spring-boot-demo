@@ -1,6 +1,5 @@
 package tg.springbootdemo.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,8 +19,7 @@ public class ProjectBugServiceImpl implements ProjectBugService {
 	public ProjectBugServiceImpl(ProjectBugRepository theProjactBugDAO) {
 		projactBugDAO = theProjactBugDAO;
 	}
-	
-	
+
 	@Override
 	@Transactional
 	public List<ProjectBug> findAll() {
@@ -38,15 +36,11 @@ public class ProjectBugServiceImpl implements ProjectBugService {
 	@Transactional
 	public void saveBug(ProjectBug theProjectBug) {
 		projactBugDAO.save(theProjectBug);
-
 	}
 
 	@Override
 	@Transactional
 	public void deleteBugById(int theId) {
 		projactBugDAO.deleteById(theId);
-
 	}
-
-
 }

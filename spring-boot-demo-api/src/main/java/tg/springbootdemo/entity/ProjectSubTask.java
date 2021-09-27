@@ -33,8 +33,6 @@ public class ProjectSubTask extends ProjectIssue {
 	private ProjectTask projectTask;
 
 	protected ProjectSubTask() {
-		// this.id = UUID.randomUUID();
-		// this.deadlineDate = new Date();
 	}
 
 	public ProjectSubTask(String title, String description, ProjectTask projectTask) {
@@ -50,7 +48,6 @@ public class ProjectSubTask extends ProjectIssue {
 	 */
 
 	public int getId() {
-		// public UUID getId() {
 		return id;
 	}
 
@@ -64,7 +61,6 @@ public class ProjectSubTask extends ProjectIssue {
 
 	public int getProjectTaskId() {
 		return projectTask.getId();
-		// return Integer.toString(this.projectTask.getId());
 	}
 
 	public void setProjectTask(ProjectTask theProjectTask) {

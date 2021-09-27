@@ -6,9 +6,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Component;
 
 /**
- * 
  * Module allowing to send updates emails to team members
- *
  */
 
 

@@ -12,12 +12,9 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import tg.springbootdemo.entity.ClientRequest;
-import tg.springbootdemo.repository.ClientRequestRepository;
 
 /**
- * 
  * Client Request Repository layer testing
- *
  */
 
 @RunWith(SpringRunner.class)
@@ -30,19 +27,17 @@ public class ClientRequestRepositoryTest {
 	@Autowired
 	private ClientRequestRepository clientRequestRepository;
 
-	// Test Find Entity by Id
 	@Test
 	public void whenFindById_thenReturnClientRequest() {
-		// Mock Request
-		ClientRequest clientRequest = new ClientRequest("John", "Smith", "john@cf.com", "Address 1", "333-444",
-				"Purpose of request 1");
+		// given
+		ClientRequest clientRequest = new ClientRequest("John", "Smith", "john@cf.com",
+				"Address 1", "333-444", "Purpose of request 1");
 
-		// Persist
+		// when
 		entityManager.persistAndFlush(clientRequest);
-
 		Optional<ClientRequest> foundRequest = clientRequestRepository.findById(clientRequest.getId());
 
-		// Check if Mock and persisted are equal
+		// then
 		assertEquals(foundRequest.get().getId(), clientRequest.getId());
 	}
 

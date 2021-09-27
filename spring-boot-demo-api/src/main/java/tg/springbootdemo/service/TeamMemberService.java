@@ -13,5 +13,4 @@ public interface TeamMemberService {
 	public TeamMember saveTeamMember(TeamMember theTeamMember);
 
 	public void deleteTeamMemberById(int theId);
-
 }

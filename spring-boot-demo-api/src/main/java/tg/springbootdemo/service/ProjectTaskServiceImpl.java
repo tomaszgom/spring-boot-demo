@@ -21,8 +21,7 @@ public class ProjectTaskServiceImpl implements ProjectTaskService {
 	public ProjectTaskServiceImpl(ProjectTaskRepository theProjactTaskDAO) {
 		projactTaskDAO = theProjactTaskDAO;
 	}
-	
-	
+
 	@Override
 	@Transactional
 	public List<ProjectTask> findAll() {
@@ -39,19 +38,16 @@ public class ProjectTaskServiceImpl implements ProjectTaskService {
 	@Transactional
 	public void saveTask(ProjectTask theProjectTask) {
 		projactTaskDAO.saveTask(theProjectTask);
-
 	}
 
 	@Override
 	@Transactional
 	public void deleteTaskById(int theId) {
 		projactTaskDAO.deleteTaskById(theId);
-
 	}
 
 	@Override
 	public List<ProjectSubTask> findAllByProjectTask(int projectTaskId) {
-		
         List<ProjectSubTask> projectSubTasks = new ArrayList<>();
         Optional<ProjectTask> theProjectTask = this.projactTaskDAO.findById(projectTaskId);      
                 
@@ -59,7 +55,5 @@ public class ProjectTaskServiceImpl implements ProjectTaskService {
         	projectSubTasks = projactTaskDAO.findAllByProjectTask(theProjectTask.get());	        
         }
         return projectSubTasks;
-		
 	}
-
 }

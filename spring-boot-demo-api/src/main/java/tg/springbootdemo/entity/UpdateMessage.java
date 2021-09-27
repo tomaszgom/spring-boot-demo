@@ -1,17 +1,13 @@
 package tg.springbootdemo.entity;
 
-
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 /**
- * 
  * UpdateMessage ORM object, not mapped with database,
  * used to handle sending update email notifications
- *
  */
-
 
 public class UpdateMessage {
 	
